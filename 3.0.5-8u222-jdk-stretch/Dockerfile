@@ -1,11 +1,12 @@
-FROM openjdk:8u171-jdk-alpine3.8
+FROM openjdk:8u222-jdk-stretch
 
-RUN apk add --no-cache curl tar bash procps
+RUN apt-get install curl tar bash procps
 
-ARG MAVEN_VERSION=3.5.4
+ARG MAVEN_VERSION=3.0.5
+
 ARG USER_HOME_DIR="/home/maven"
 
-RUN adduser maven -D
+RUN useradd maven 
 
 RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
   && curl -fsSL http://apache.osuosl.org/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz \
