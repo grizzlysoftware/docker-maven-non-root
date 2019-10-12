@@ -1,16 +1,36 @@
-# Docker Image to run Maven as non root user
+# Docker Image to run Apache Maven as non root user
+this is fork of [jtim's repository](https://github.com/j-tim/docker-maven-non-root).
+This repository just adds images that are combination of various Maven and OpenJDK versions.
 
-Available Maven version:
+Available Maven versions:
 
+* 3.6.2
+* 3.6.1
 * 3.5.4
-* 3.3.9
+* 3.2.5
+* 3.1.1
+* 3.0.5
+
+Available OpenJDK versions:
+* 8u222-jdk-stretch
+* 11.0.4-jdk-stretch
 
 Docker image tags:
+basicaly it gives us $mvn_version x $jdk_version, so:
+* 3.0.5-11.0.4-jdk-stretch
+* 3.0.5-8u222-jdk-stretch
+* 3.1.1-11.0.4-jdk-stretch
+* 3.1.1-8u222-jdk-stretch
+* 3.2.5-11.0.4-jdk-stretch
+* 3.2.5-8u222-jdk-stretch
+* 3.5.4-11.0.4-jdk-stretch
+* 3.5.4-8u222-jdk-stretch
+* 3.6.1-11.0.4-jdk-stretch
+* 3.6.1-8u222-jdk-stretch
+* 3.6.2-11.0.4-jdk-stretch
+* 3.6.2-8u222-jdk-stretch
 
-* latest, 3.5.4-jdk-8-alpine
-* 3.3.9-jdk-8-alpine
-
-Images are pushed to [Dockerhub](https://hub.docker.com/r/jtim/maven-non-root/)
+Images are pushed to [Dockerhub](https://hub.docker.com/r/grizzlysoftware/maven-non-root/)
 
 ## Example how to use this Docker image using Gitlab CI
 
@@ -20,8 +40,8 @@ Images are pushed to [Dockerhub](https://hub.docker.com/r/jtim/maven-non-root/)
 stages:
   - build
 
-java-maven-3.5.4-jdk-8-alpine-job:
-  image: jtim/maven-non-root:3.5.4-jdk-8-alpine
+java-maven-3.6.2-11.0.4-jdk-stretch-job:
+  image: grizzlysoftware/maven-non-root:3.6.2-11.0.4-jdk-stretch
   stage: build
   script:
     - whoami
